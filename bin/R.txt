@@ -95,7 +95,15 @@ int string common_google_play_services_update_text 0x7f060008
 int string common_google_play_services_update_title 0x7f060007
 int string common_signin_button_text 0x7f060012
 int string common_signin_button_text_long 0x7f060013
+int string connection_error 0x7f060023
 int string hello_world 0x7f06001c
+int string lost_connection 0x7f060021
+int string page_title 0x7f06001f
+int string refresh 0x7f06001e
+int string settings 0x7f06001d
+int string updated 0x7f060020
+int string wifi_connected 0x7f060022
+int string xml_error 0x7f060024
 int style AppBaseTheme 0x7f090000
 int style AppTheme 0x7f090001
 int[] styleable AdsAttrs { 0x7f010000, 0x7f010001 }

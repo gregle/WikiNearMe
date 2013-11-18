@@ -322,7 +322,19 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
+        public static final int connection_error=0x7f060023;
         public static final int hello_world=0x7f06001c;
+        public static final int lost_connection=0x7f060021;
+        /**   NetworkActivity 
+         */
+        public static final int page_title=0x7f06001f;
+        public static final int refresh=0x7f06001e;
+        /**   Menu items 
+         */
+        public static final int settings=0x7f06001d;
+        public static final int updated=0x7f060020;
+        public static final int wifi_connected=0x7f060022;
+        public static final int xml_error=0x7f060024;
     }
     public static final class style {
         /** 
