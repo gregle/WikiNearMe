@@ -30,7 +30,10 @@ public class XmlParser {
 	private List<Entry> readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
 		List<Entry> entries = new ArrayList<Entry>();
 
-		parser.require(XmlPullParser.START_TAG, ns, "articles");
+		parser.require(XmlPullParser.START_TAG, ns, "wikilocation");
+		String thing = parser.getName();
+		parser.nextTag();
+		thing = parser.getName();
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;

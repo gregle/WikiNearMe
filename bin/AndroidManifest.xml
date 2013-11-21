@@ -39,6 +39,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name=".MapActivity"
+            android:label="@string/map_label" />
         
     </application>
 </manifest>

@@ -325,6 +325,7 @@ containing a value of this type.
         public static final int connection_error=0x7f060023;
         public static final int hello_world=0x7f06001c;
         public static final int lost_connection=0x7f060021;
+        public static final int map_label=0x7f060025;
         /**   NetworkActivity 
          */
         public static final int page_title=0x7f06001f;

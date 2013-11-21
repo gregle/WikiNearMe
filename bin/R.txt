@@ -98,6 +98,7 @@ int string common_signin_button_text_long 0x7f060013
 int string connection_error 0x7f060023
 int string hello_world 0x7f06001c
 int string lost_connection 0x7f060021
+int string map_label 0x7f060025
 int string page_title 0x7f06001f
 int string refresh 0x7f06001e
 int string settings 0x7f06001d
