@@ -31,9 +31,7 @@ public class XmlParser {
 		List<Entry> entries = new ArrayList<Entry>();
 
 		parser.require(XmlPullParser.START_TAG, ns, "wikilocation");
-		String thing = parser.getName();
 		parser.nextTag();
-		thing = parser.getName();
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 				continue;
@@ -75,7 +73,7 @@ public class XmlParser {
 	// tag.
 	private Entry readEntry(XmlPullParser parser)
 			throws XmlPullParserException, IOException {
-		parser.require(XmlPullParser.START_TAG, ns, "entry");
+		parser.require(XmlPullParser.START_TAG, ns, "article");
 		String id = null;
 		String lat = null;
 		String lng = null;

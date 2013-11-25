@@ -1,3 +1,5 @@
+
+
 package com.jcrastelli.wikinearme;
 
 import android.location.Location;
@@ -16,13 +18,16 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.model.LatLng;
 
-public class MapActivity extends FragmentActivity implements
-ConnectionCallbacks,
-OnConnectionFailedListener,
-LocationListener,
-OnMyLocationButtonClickListener{
-	//private ArrayList<String> items = new ArrayList<String>();
-	//private static final LatLng BURIEN = new LatLng(47.6097, -122.3331);
+public class MapActivity extends FragmentActivity
+	implements
+		ConnectionCallbacks,
+		OnConnectionFailedListener,
+		LocationListener,
+		OnMyLocationButtonClickListener{
+	
+	public GoogleMap theMap;
+	
+	public LocationClient mLocationClient;
 	
 	// These settings are the same as the settings for the map. They will in fact give you updates
     // at the maximal rates currently possible.
@@ -30,22 +35,18 @@ OnMyLocationButtonClickListener{
             .setInterval(5000)         // 5 seconds
             .setFastestInterval(16)    // 16ms = 60fps
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-	public GoogleMap theMap;
-	public LocationClient mLocationClient;
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initMap();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //setUpMapIfNeeded();
-        //setUpLocationClientIfNeeded();
+        setUpMapIfNeeded();
+        setUpLocationClientIfNeeded();
         mLocationClient.connect();
     }
 
@@ -57,9 +58,7 @@ OnMyLocationButtonClickListener{
         }
     }
 	
-	public void initMap() {
-        initLocationClient();
-        mLocationClient.connect();
+	public void setUpMapIfNeeded() {
     	// Do a null check to confirm that we have not already instantiated the map.
         if (theMap == null) {
             // Try to obtain the map from the SupportMapFragment.
@@ -69,18 +68,22 @@ OnMyLocationButtonClickListener{
             if (theMap != null) {
             	theMap.setMyLocationEnabled(true);
             	theMap.setOnMyLocationButtonClickListener(this);
-                setUpMap();
             }
         }
     }
     
-    private void initLocationClient() {
+    private void setUpLocationClientIfNeeded() {
         if (mLocationClient == null) {
             mLocationClient = new LocationClient( 
             		getApplicationContext(),
             		this,  // ConnectionCallbacks
             		this); // OnConnectionFailedListener
         }
+    }
+    
+    @Override
+	public void onLocationChanged(Location location) {
+    	
     }
     
     /**
@@ -110,16 +113,6 @@ OnMyLocationButtonClickListener{
         // Do nothing
     }
     
-    private void setUpMap()
-    {
-    	centerMap();
-    	//mBurien = theMap.addMarker(new MarkerOptions()
-    			//.position(BURIEN)
-                //.title("Burien")
-                //.snippet("Population: 49,410")
-                //.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-    }
-    
     private void centerMap()
     {
     	if (mLocationClient!=null)
@@ -136,10 +129,4 @@ OnMyLocationButtonClickListener{
         // (the camera animates to the user's current position).
         return false;
     }
-
-	@Override
-	public void onLocationChanged(Location arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

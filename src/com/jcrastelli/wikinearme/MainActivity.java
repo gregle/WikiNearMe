@@ -44,10 +44,8 @@ public class MainActivity extends Activity{
     // The user's current network preference setting.
     public static String sPref = null;
     
- // The BroadcastReceiver that tracks network connectivity changes.
+    // The BroadcastReceiver that tracks network connectivity changes.
     private NetworkReceiver receiver = new NetworkReceiver();
-    
-    private MapActivity map;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,21 +69,15 @@ public class MainActivity extends Activity{
     @Override
     protected void onResume() {
         super.onResume();
-        //initmap();
-        //thing = new XMLResource();
-        //XmlParser();
         
     }
     
     @Override
     public void onPause() {
         super.onPause();
-        if (map.mLocationClient != null) {
-            map.mLocationClient.disconnect();
-        }
     }
     
-    /*// Refreshes the display if the network connection and the
+    // Refreshes the display if the network connection and the
     // pref settings allow it.
     @Override
     public void onStart() {
@@ -108,7 +100,7 @@ public class MainActivity extends Activity{
         if (refreshDisplay) {
             loadPage();
         }
-    }*/
+    }
     
     @Override
     public void onDestroy() {
@@ -171,15 +163,9 @@ public class MainActivity extends Activity{
         XmlParser xmlParser = new XmlParser();
         List<Entry> entries = null;
             
-        // Checks whether the user set the preference to include summary text
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean pref = sharedPrefs.getBoolean("summaryPref", false);
-            
         try {
             stream = downloadUrl(urlString);        
             entries = xmlParser.parse(stream);
-            String thing2 = "";
-            thing2 = ";";
         // Makes sure that the InputStream is closed after the app is
         // finished using it.
         } finally {
